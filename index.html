@@ -385,6 +385,30 @@ A mapping of digits to letters (just like on the telephone buttons) is given bel
                 </code>
             </pre>
         </div>
+        <div id="questionbox">
+         LC:137-Single Number II-Given an integer array nums where every element appears three times except for one, which appears exactly once. Find the single element and return it.
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+Example 1:
+Input: nums = [2,2,3,2]
+Output: 3
+        </div>
+        <div id="solution">
+            <pre>
+                <code class="language-java">
+                    class Solution {
+    public int singleNumber(int[] nums) {
+        int ones=0;
+        int twos=0;
+        for(int i=0;i&lt;nums.length;i++){
+            ones=(ones^nums[i]) & ~twos;
+            twos=(twos^nums[i]) & ~ones;
+        }
+        return ones;
+    }
+}
+</code>
+            </pre>
+        </div>
     </div>
     
     
