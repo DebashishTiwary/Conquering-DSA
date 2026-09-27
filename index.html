@@ -628,6 +628,48 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
                 </code>
             </pre>
         </div>
+        <div id="questionbox">
+        LC:56-Merge Intervals-Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+Example 2:
+
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+Example 3:
+
+Input: intervals = [[4,7],[1,4]]
+Output: [[1,7]]
+Explanation: Intervals [1,4] and [4,7] are considered overlapping.
+       </div>
+       <div id="solution">
+        <pre>
+            <code class="language-java">
+                class Solution {
+    public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        List&lt;int[]> finalList=new ArrayList&lt;>();
+        int i=0;
+        while(i&lt;intervals.length){
+        int[] temp={intervals[i][0],intervals[i][1]};
+        while(i&lt;intervals.length && temp[1]>=intervals[i][0]){
+            temp[0]=(int)Math.min(temp[0],intervals[i][0]);
+            temp[1]=(int)Math.max(temp[1],intervals[i][1]);
+            i++;
+        }
+        finalList.add(temp);
+        }
+        return finalList.toArray(new int[finalList.size()][]);
+    }
+}
+Time Complexity:O(NlogN) - due to sorting of Nx2 matrix
+Space Complexity:O(k) k-size of new array 
+            </code>
+        </pre>
+       </div>
     </div>
     
     
