@@ -1066,6 +1066,28 @@ n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the
                 </code>
             </pre>
         </div>
+        <div id="questionbox">LC:9. Palindrome Number</div>
+        <div id="solution">
+            <pre>
+                <code class="language-java">
+                    class Solution {
+    public boolean isPalindrome(int x) {
+        if(x < 0){
+   return false;
+}
+int rev = 0;
+int num = x;
+while (num != 0) {
+    rev = rev * 10 + num % 10; // Add last digit
+    num = num / 10;            // Remove last digit
+}
+return (rev == x);
+    }
+}
+                </code>
+            </pre>
+        </div>
+
     </div>
     
     
